@@ -11,6 +11,6 @@ class Header extends Component {
 				<h1>This is JiangRun is Blog</h1>
 			</div>
 		);
-	};
+	}
 };
 export default Header;
