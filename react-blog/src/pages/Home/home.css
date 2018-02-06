@@ -1,7 +1,7 @@
 .container {
   width: 64em;
   max-width: calc(96%);
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .container .nav {
   color: #636363;
@@ -21,6 +21,7 @@
   border-bottom-left-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
   padding: 1em;
+  margin-bottom: 10em;
 }
 h1 {
   font-weight: 300;

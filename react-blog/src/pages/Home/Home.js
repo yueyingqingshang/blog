@@ -1,17 +1,24 @@
 import React ,{ Component } from 'react';
-import home from './home.css';
+import './home.css';
 import Header from '../../components/Header/Header';
-import Menus from '../../components/Menu/Menu';
+import MenuList from '../../components/Menu/Menu';
+import ArticleList from '../../components/ArticleList';
+import { Redirect } from 'react-router-dom';
 class Home extends Component {
+	constructor(props) {
+		super(props)
+	}
 	render() {
+		const { tags } = this.props;
+		console.log(tags);
 		return (
 			<div className="container">
 				<Header/>
 				<div className="nav">
-					<Menus />
+					<MenuList history={this.props.history} />
 				</div>
 				<div className="main">
-					这里是问斩个列表
+					<ArticleList  history={this.props.history} tags={tags} />
 				</div>
 			</div>
 		)
