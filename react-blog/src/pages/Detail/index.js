@@ -16,9 +16,8 @@ class Detail extends Component {
     render() {
         return(
             <div className="container">
-                <Header/>
-                <div className="nav">
-                    <MenuList history={this.props.history} />
+                <div className="header">
+                    <h1>文章标题在这里</h1>
                 </div>
                 <div className="main">
                     <div id='preview' className="main">

@@ -12,7 +12,6 @@ export default class ArticleListCell extends Component {
         return(
             <div className="ac_container" onClick={
                 () => {
-                	console.log(this.props);
                     this.props.history.push(`/detail/${this.props.data._id}`, {id: this.props.data_id});
                 }
               }
