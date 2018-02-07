@@ -25,6 +25,9 @@ class Detail extends Component {
                             {remark().use(reactRenderer).processSync(articleContent).contents}
                         </div>
                     </div>
+                    <div className="detail-menu">
+                        <MenuList history={this.props.history} mode="horizontal"/>
+                    </div> 
                 </div>
             </div>
         )

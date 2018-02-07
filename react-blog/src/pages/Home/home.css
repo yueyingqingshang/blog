@@ -14,6 +14,7 @@
   text-align: center;
 }
 .container .main {
+  position: relative;
   width: 64em;
   max-width: calc(96%);
   background-color: #ffffff;
@@ -22,6 +23,11 @@
   border-bottom-right-radius: 0.25em;
   padding: 1em;
   margin-bottom: 10em;
+}
+.container .main .detail-menu {
+  position: absolute;
+  top: -3.48em;
+  right: 0;
 }
 h1 {
   font-weight: 300;

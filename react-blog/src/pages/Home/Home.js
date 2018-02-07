@@ -15,7 +15,7 @@ class Home extends Component {
 			<div className="container">
 				<Header/>
 				<div className="nav">
-					<MenuList history={this.props.history} />
+					<MenuList history={this.props.history} mode="horizontal"/>
 				</div>
 				<div className="main">
 					<ArticleList  history={this.props.history} tags={tags} />

@@ -29,7 +29,7 @@ class MenuList extends Component {
             <Menu
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current.menuName]}
-                mode="horizontal"
+                mode={this.props.mode}
                 className="menucontainer"
             >
                 {
