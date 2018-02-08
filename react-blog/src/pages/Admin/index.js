@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './style.css';
-//import AdminMenu from '../../components/AdminMenu';
-//import AdminIndex from '../AdminIndex';
-//import AdminManagerUser from '../AdminManagerUser';
+import AdminMenu from '../../components/AdminMenu';
+import AdminIndex from '../AdminIndex';
+import AdminManagerUser from '../AdminManagerUser';
+import AdminTabs from '../../components/AdminTabs';
 //import AdminManagerTags from '../AdminManagerTags';
 //import AdminManagerArticle from '../AdminManagerArticle';
 //import AdminManagerComment from '../AdminManagerComment';
@@ -11,6 +12,25 @@ import './style.css';
 import Detail from '../Detail';
 import NotFound from '../NotFound';
 class Admin extends Component {
+    constructor(props) {
+        super(props);
+    }
+    handleTabs(e) {
+        console.log(this.refs.adminMenu.state.menus,e);
+        let tab = {
+            key: e.key,
+
+        };
+        //this.refs.adminTabs.add(tabKey);
+    }
+    onChange(e) {
+        console.log(e);
+        let currKey = e;
+        this.refs.adminTabs.setState({
+            activeKey: currKey
+        });
+        //this.setState({ activeKey });
+    }
     render() {
         const { url } = this.props.match;
         return (
@@ -18,20 +38,12 @@ class Admin extends Component {
                 {
                     <div className="admin_container">
                         <div className="menuContainer">
-                            <AdminMenu history={this.props.history} />
+                            <AdminMenu ref="adminMenu" handleTabs={this.handleTabs.bind(this)}/>
                         </div>
                         <div className="contentContainer">
-                            <Switch>
-                                <Route exact path={url} component={AdminIndex}/>
-                                <Route path={`${url}/managerUser`} component={AdminManagerUser}/>
-                                <Route path={`${url}/managerTags`} component={AdminManagerTags}/>
-                                <Route path={`${url}/newArticle`} component={AdminNewArticle}/>
-                                <Route path={`${url}/managerArticle`} component={AdminManagerArticle}/>
-                                <Route path={`${url}/managerComment`} component={AdminManagerComment}/>
-                                <Route path={`${url}/detail`} component={Detail}/>
-                                <Route component={NotFound}/>
-                            </Switch>
+                            <AdminTabs ref="adminTabs" handleChange={this.onChange.bind(this)}/>
                         </div>
+                        
                     </div>
                 }
             </div>

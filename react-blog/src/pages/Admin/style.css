@@ -1,0 +1,19 @@
+.admin_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 0;
+  background: white;
+}
+.admin_container .menuContainer {
+  width: 15%;
+  height: 100%;
+  background: #404040;
+}
+.admin_container .contentContainer {
+  width: 85%;
+  padding: 20px;
+  overflow-y: scroll;
+}
