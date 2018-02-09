@@ -46,7 +46,9 @@ export default class AdminManagerUser extends Component {
                     pagination={false}
                     columns={columns}
                     dataSource={dataSource}/>
-                <Pagination onChange={()=>{}} total={50} showTotal=	{total => `总共 ${total} 条记录`}/>
+                <div className="page-box">
+                    <Pagination onChange={()=>{}} total={50} showTotal= {total => `总共 ${total} 条记录`}/>
+                </div>
             </div>
         )
     }

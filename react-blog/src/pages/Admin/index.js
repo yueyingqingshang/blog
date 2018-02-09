@@ -5,7 +5,7 @@ import AdminMenu from '../../components/AdminMenu';
 import AdminIndex from '../AdminIndex';
 import AdminManagerUser from '../AdminManagerUser';
 import AdminTabs from '../../components/AdminTabs';
-//import AdminManagerTags from '../AdminManagerTags';
+import AdminManagerTags from '../AdminManagerTags';
 //import AdminManagerArticle from '../AdminManagerArticle';
 //import AdminManagerComment from '../AdminManagerComment';
 //import AdminNewArticle from '../AdminNewArticle';
@@ -13,8 +13,9 @@ import Detail from '../Detail';
 import NotFound from '../NotFound';
 const tabsArr = [
     {name: 'AdminIndex',content: <AdminIndex />},
-    {name: 'AdminManagerUser',content: <AdminManagerUser />}
-]
+    {name: 'AdminManagerUser',content: <AdminManagerUser />},
+    {name: 'AdminManagerTags',content: <AdminManagerTags />}
+];
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -46,9 +47,25 @@ class Admin extends Component {
         });
     }
     onEdit(targetKey,action) {
-        this.refs.adminTabs.remove(targetKey);
-        this.refs.adminMenu.setState({
-            key: this.refs.adminTabs.state.activeKey
+    	let adminTab = this.refs.adminTabs;
+        let activeKey = adminTab.state.activeKey;
+		let lastIndex;
+		adminTab.state.panes.forEach((pane, i) => {
+	  		if (pane.key === targetKey) {
+		    	lastIndex = i - 1;
+		  	};
+		});
+		const panes = adminTab.state.panes.filter(pane => pane.key !== targetKey);
+		if (lastIndex >= 0) {
+	  		activeKey = panes[lastIndex].key;
+		} else {
+			activeKey = panes[0].key;
+		};
+		adminTab.setState({ 
+			panes, activeKey 
+		});
+		this.refs.adminMenu.setState({
+            key: activeKey
         });
     }
     render() {
@@ -62,7 +79,6 @@ class Admin extends Component {
                         <div className="contentContainer">
                             <AdminTabs ref="adminTabs" handleChange={this.onChange.bind(this)} handleEdit={this.onEdit.bind(this)}/>
                         </div>
-                        
                     </div>
                 }
             </div>
