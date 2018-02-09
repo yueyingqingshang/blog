@@ -13,7 +13,7 @@ export default class AdminMenu extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			key: 'home',
+			key: 'AdminIndex',
 			menus: menus
 		};
 	}

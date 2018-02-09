@@ -11,37 +11,56 @@ import AdminTabs from '../../components/AdminTabs';
 //import AdminNewArticle from '../AdminNewArticle';
 import Detail from '../Detail';
 import NotFound from '../NotFound';
+const tabsArr = [
+    {name: 'AdminIndex',content: <AdminIndex />},
+    {name: 'AdminManagerUser',content: <AdminManagerUser />}
+]
 class Admin extends Component {
     constructor(props) {
         super(props);
     }
     handleTabs(e) {
-        console.log(this.refs.adminMenu.state.menus,e);
+        let tabName = this.refs.adminMenu.state.menus.find((arrItem)=>{
+            return arrItem.key == e.key;
+        });
+        let content = tabsArr.find((arrItem)=>{
+            return arrItem.name == e.key;
+        });
         let tab = {
             key: e.key,
-
+            name: tabName.name,
+            content: content.content
         };
-        //this.refs.adminTabs.add(tabKey);
+        this.refs.adminTabs.add(tab);
+        this.refs.adminMenu.setState({
+            key: e.key
+        });
     }
     onChange(e) {
-        console.log(e);
         let currKey = e;
         this.refs.adminTabs.setState({
             activeKey: currKey
         });
-        //this.setState({ activeKey });
+        this.refs.adminMenu.setState({
+            key: currKey
+        });
+    }
+    onEdit(targetKey,action) {
+        this.refs.adminTabs.remove(targetKey);
+        this.refs.adminMenu.setState({
+            key: this.refs.adminTabs.state.activeKey
+        });
     }
     render() {
-        const { url } = this.props.match;
         return (
             <div>
                 {
                     <div className="admin_container">
                         <div className="menuContainer">
-                            <AdminMenu ref="adminMenu" handleTabs={this.handleTabs.bind(this)}/>
+                            <AdminMenu ref="adminMenu" handleTabs={this.handleTabs.bind(this)} />
                         </div>
                         <div className="contentContainer">
-                            <AdminTabs ref="adminTabs" handleChange={this.onChange.bind(this)}/>
+                            <AdminTabs ref="adminTabs" handleChange={this.onChange.bind(this)} handleEdit={this.onEdit.bind(this)}/>
                         </div>
                         
                     </div>
