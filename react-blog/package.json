@@ -21,7 +21,8 @@
     "react-scripts": "1.1.0",
     "remark": "^9.0.0",
     "remark-react": "^4.0.1",
-    "serve-favicon": "^2.4.5"
+    "serve-favicon": "^2.4.5",
+    "webpack-dev-middleware": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,6 +31,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
     "babel-register": "^6.26.0"
   }
 }
