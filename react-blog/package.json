@@ -35,5 +35,5 @@
     "babel-preset-node6": "^11.0.0",
     "babel-register": "^6.26.0"
   },
-  "homepage": "./react-blog/build"
+  "homepage": "./"
 }
